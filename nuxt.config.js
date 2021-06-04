@@ -24,6 +24,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/formatters.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -39,13 +40,14 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios'
   ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
@@ -59,7 +61,13 @@ export default {
       }
     }
   },
-
+  env: {
+    VERSION: '0.1.0',
+    NUXT_ENV_API_URL: process.env.NUXT_ENV_API_URL || 'http://localhost:5001/api',
+  },
+  router: {
+    middleware: ['breadcrumbs']
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }

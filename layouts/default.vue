@@ -59,6 +59,11 @@
     </v-app-bar>
     <v-main>
       <v-container>
+        <v-row class="pa-2 pb-0">
+            <v-col class="pa-0">
+                <v-breadcrumbs :items="breadcrumbs" large class="pl-0 pb-3" />
+            </v-col>
+        </v-row>
         <nuxt />
       </v-container>
     </v-main>
@@ -98,19 +103,29 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
+          title: 'Inicio',
           to: '/'
         },
         {
           icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
+          title: 'Recepción',
+          to: '/Recepcion'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Solicitud',
+          to: '/Solicitud'
         }
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Video CPU'
+    }
+  }, 
+  computed: {
+    breadcrumbs() {
+        return this.$store.state.breadcrumb
     }
   }
 }
